@@ -9,11 +9,6 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     
-    // 1. Передать сюда массив с ответами
-    // 2. Определить наиболее часто встречающийся тип животного
-    // 3. Отобразить результат в соответсвии с этим животным
-    // 4. Избавиться от кнопки возврата назад на экране результатов
-    
     // Mark: Outlets & values
     
     @IBOutlet var resultAnimalType: UILabel!
@@ -27,22 +22,21 @@ class ResultsViewController: UIViewController {
     private var rabbitAnswers: [Answer] = []
     private var turtleAnswers: [Answer] = []
     
-
+    // Mark: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         createNewArrays()
         determineWhoAreYou()
-        navigationItem.hidesBackButton = true
         
+        navigationItem.hidesBackButton = true
     }
-    
-    
-    
-    
 }
+
 
 // Mark: Private methods
 extension ResultsViewController{
+    
     private func createNewArrays() {
         for a in answersChoosen {
             if a.type == PersonalQuiz.AnimalType.dog {
@@ -62,11 +56,9 @@ extension ResultsViewController{
         if dogAnswers.count > catAnswers.count && dogAnswers.count > rabbitAnswers.count && dogAnswers.count > turtleAnswers.count {
             resultAnimalType.text = "Вы \(AnimalType.dog.rawValue)"
             resultDescription.text = "\(AnimalType.dog.definition)"
-            
         } else if catAnswers.count > dogAnswers.count && catAnswers.count > rabbitAnswers.count && catAnswers.count > turtleAnswers.count {
             resultAnimalType.text = "Вы \(AnimalType.cat.rawValue)"
             resultDescription.text = "\(AnimalType.cat.definition)"
-            
         } else if rabbitAnswers.count > dogAnswers.count && rabbitAnswers.count > catAnswers.count && rabbitAnswers.count > turtleAnswers.count {
             resultAnimalType.text = "Вы \(AnimalType.rabbit.rawValue)"
             resultDescription.text = "\(AnimalType.rabbit.definition)"
@@ -76,10 +68,6 @@ extension ResultsViewController{
         } else {
             resultAnimalType.text = ""
             resultDescription.text = "Вы многогранная личность"
-            
         }
-        
     }
-    
-    
 }
