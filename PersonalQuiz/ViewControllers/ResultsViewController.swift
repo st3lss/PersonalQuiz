@@ -32,7 +32,7 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
         createNewArrays()
         determineWhoAreYou()
-        
+        navigationItem.hidesBackButton = true
         
     }
     
